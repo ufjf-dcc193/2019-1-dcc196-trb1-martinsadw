@@ -22,4 +22,12 @@ public class HomeController {
         mv.addObject("sede", sede);
         return mv;
     }
+    
+    @RequestMapping("membro")
+    public ModelAndView membro(Membro membro) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("membro");
+        mv.addObject("membro", membro);
+        return mv;
+    }
 }
