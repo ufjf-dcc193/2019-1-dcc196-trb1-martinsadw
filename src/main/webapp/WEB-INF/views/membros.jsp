@@ -22,6 +22,7 @@
                     <th>E-mail</th>
                     <th>Data de Entrada</th>
                     <th>Data de Saída</th>
+                    <th>Ações</th>
                 </tr>
                 <c:forEach items="${membros}" var="membro">
                     <tr>
@@ -31,7 +32,7 @@
                         <td><a href="mailto:${membro.email}">${membro.email}</a></td>
                         <td>${membro.dataEntrada}</td>
                         <td>${membro.dataSaida}</td>
-                        <!-- <td><a href="delete?id=${sede.id}">X</a></td> -->
+                        <td><a href="membro-read?id=${membro.id}">Ver</a></td>
                     </tr>
                 </c:forEach>
             </table>

@@ -86,11 +86,12 @@ public class HomeController {
         return mv;
     }
     
-    @RequestMapping("membro")
-    public ModelAndView membro(Membro membro) {
+
+    @RequestMapping("membro-read")
+    public ModelAndView membroRead(Long id) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("membro");
-        mv.addObject("membro", membro);
+        mv.setViewName("membro-read");
+        mv.addObject("membro", repMembro.findById(id).get());
 
         return mv;
     }
