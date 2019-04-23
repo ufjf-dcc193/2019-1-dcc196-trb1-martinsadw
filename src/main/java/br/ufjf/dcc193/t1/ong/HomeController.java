@@ -118,6 +118,26 @@ public class HomeController {
         return mv;
     }
 
+    @RequestMapping("membro-update")
+    public ModelAndView membroUpdate(Long id) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("membro-update");
+        mv.addObject("membro", repMembro.findById(id).get());
+
+        return mv;
+    }
+
+    @RequestMapping("membro-update-confirm")
+    public String membroUpdateConfirm(Membro membro) {
+        Membro oldMembro = repMembro.findById(membro.getId()).get();
+        Long sedeid = oldMembro.getSede().getId();
+
+        membro.setSede(oldMembro.getSede());
+        repMembro.save(membro);
+
+        return "redirect:membros?sedeid=" + sedeid;
+    }
+
     @RequestMapping("membro-delete")
     public String membroDelete(Long id) {
         Membro membro = repMembro.findById(id).get();

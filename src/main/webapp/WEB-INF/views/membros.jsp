@@ -33,7 +33,7 @@
                         <td><a href="mailto:${membro.email}">${membro.email}</a></td>
                         <td>${membro.dataEntrada}</td>
                         <td>${membro.dataSaida}</td>
-                        <td><a href="membro-read?id=${membro.id}">Ver</a> <a href="membro-delete?id=${membro.id}">Apagar</a></td>
+                        <td><a href="membro-read?id=${membro.id}">Ver</a> <a href="membro-update?id=${membro.id}">Atualizar</a> <a href="membro-delete?id=${membro.id}">Apagar</a></td>
                     </tr>
                 </c:forEach>
             </table>
