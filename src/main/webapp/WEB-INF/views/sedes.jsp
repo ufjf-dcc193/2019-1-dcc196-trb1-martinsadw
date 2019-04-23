@@ -14,6 +14,7 @@
     <body>
         <div>
             <h1>Sedes</h1>
+            <p><a href="sede-create">Criar sede</a></p>
             <table border=1>
                 <tr>
                     <th>ID</th>

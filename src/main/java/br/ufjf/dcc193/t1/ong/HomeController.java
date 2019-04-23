@@ -30,8 +30,20 @@ public class HomeController {
         return mv;
     }
 
+    @RequestMapping("sede-create")
+    public String sedeCreate(Long id) {
+        return "sede-create";
+    }
+
+    @RequestMapping("sede-create-confirm")
+    public String sedeCreateConfirm(Sede sede) {
+        repSede.save(sede);
+
+        return "redirect:sedes";
+    }
+
     @RequestMapping("sede-read")
-    public ModelAndView readSede(Long id) {
+    public ModelAndView sedeRead(Long id) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("sede-read");
         mv.addObject("sede", repSede.findById(id).get());
@@ -40,13 +52,10 @@ public class HomeController {
     }
 
     @RequestMapping("sede-delete")
-    public ModelAndView deleteSede(Long id) {
+    public String sedeDelete(Long id) {
 		repSede.deleteById(id);
 
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("sede-delete");
-
-        return mv;
+        return "redirect:sedes";
     }
 
     @RequestMapping("membros")
