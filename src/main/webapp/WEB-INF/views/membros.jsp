@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Sedes - ONG</title>
+        <title>Membros - ONG</title>
         <style>
             table {
                 border-spacing: 0;
@@ -13,26 +13,24 @@
     </head>
     <body>
         <div>
-            <h1>Sedes</h1>
+            <h1>Membros</h1>
             <table border=1>
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Estado</th>
-                    <th>Cidade</th>
-                    <th>Bairro</th>
-                    <th>Telefone</th>
-                    <th>Site</th>
+                    <th>Função</th>
+                    <th>E-mail</th>
+                    <th>Data de Entrada</th>
+                    <th>Data de Saída</th>
                 </tr>
-                <c:forEach items="${sedes}" var="sede">
+                <c:forEach items="${membros}" var="membro">
                     <tr>
-                        <td>${sede.id}</td>
-                        <td>${sede.nome}</td>
-                        <td>${sede.estado}</td>
-                        <td>${sede.cidade}</td>
-                        <td>${sede.bairro}</td>
-                        <td>${sede.telefone}</td>
-                        <td><a href="${sede.site}">${sede.site}</a></td>
+                        <td>${membro.id}</td>
+                        <td>${membro.nome}</td>
+                        <td>${membro.funcao}</td>
+                        <td><a href="mailto:${membro.email}">${membro.email}</a></td>
+                        <td>${membro.dataEntrada}</td>
+                        <td>${membro.dataSaida}</td>
                         <!-- <td><a href="delete?id=${sede.id}">X</a></td> -->
                     </tr>
                 </c:forEach>

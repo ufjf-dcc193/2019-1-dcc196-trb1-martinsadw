@@ -18,6 +18,17 @@ public class Membro {
     private Date dataEntrada;
     private Date dataSaida;
 
+    public Membro() {
+
+    }
+    public Membro(String nome, String funcao, String email, Date dataEntrada, Date dataSaida) {
+        this.nome = nome;
+        this.funcao = funcao;
+        this.email = email;
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
+    }
+
     public Long getId() {
         return id;
     }

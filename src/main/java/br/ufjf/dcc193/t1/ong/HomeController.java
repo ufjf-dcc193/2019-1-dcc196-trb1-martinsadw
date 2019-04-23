@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 	@Autowired
     SedeRepository repSede;
+	@Autowired
+    MembroRepository repMembro;
     
     @RequestMapping("index")
     public String home() {
@@ -28,6 +30,16 @@ public class HomeController {
 
         List<Sede> sedes = repSede.findAll();
         mv.addObject("sedes", sedes);
+        return mv;
+    }
+    
+    @RequestMapping("membros")
+    public ModelAndView membros() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("membros");
+
+        List<Membro> membros = repMembro.findAll();
+        mv.addObject("membros", membros);
         return mv;
     }
     
