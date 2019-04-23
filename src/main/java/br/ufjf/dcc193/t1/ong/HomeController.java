@@ -95,4 +95,13 @@ public class HomeController {
 
         return mv;
     }
+
+    @RequestMapping("membro-delete")
+    public String membroDelete(Long id) {
+        Membro membro = repMembro.findById(id).get();
+        Long sedeid = membro.getSede().getId();
+        repMembro.delete(membro);
+
+        return "redirect:membros?sedeid=" + sedeid;
+    }
 }
