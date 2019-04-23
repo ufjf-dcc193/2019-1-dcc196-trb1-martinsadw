@@ -1,7 +1,5 @@
 package br.ufjf.dcc193.t1.ong;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,17 +25,27 @@ public class HomeController {
     public ModelAndView sedes() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("sedes");
+        mv.addObject("sedes", repSede.findAll());
 
-        List<Sede> sedes = repSede.findAll();
-        mv.addObject("sedes", sedes);
         return mv;
     }
 
-    @RequestMapping("read-sede")
+    @RequestMapping("sede-read")
     public ModelAndView readSede(Long id) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("read-sede");
+        mv.setViewName("sede-read");
         mv.addObject("sede", repSede.findById(id).get());
+
+        return mv;
+    }
+
+    @RequestMapping("sede-delete")
+    public ModelAndView deleteSede(Long id) {
+		repSede.deleteById(id);
+
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("sede-delete");
+
         return mv;
     }
 
@@ -45,9 +53,8 @@ public class HomeController {
     public ModelAndView membros() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("membros");
+        mv.addObject("membros", repMembro.findAll());
 
-        List<Membro> membros = repMembro.findAll();
-        mv.addObject("membros", membros);
         return mv;
     }
     
@@ -56,6 +63,7 @@ public class HomeController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("membro");
         mv.addObject("membro", membro);
+
         return mv;
     }
 }

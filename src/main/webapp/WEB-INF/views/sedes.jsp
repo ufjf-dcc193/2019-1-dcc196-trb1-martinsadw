@@ -36,7 +36,7 @@
                         <td>${sede.telefone}</td>
                         <td><a href="${sede.site}">${sede.site}</a></td>
                         <td>${sede.membros.toString()}</td>
-                        <td><a href="read-sede?id=${sede.id}">Ver</a></td>
+                        <td><a href="sede-read?id=${sede.id}">Ver</a> <a href="sede-delete?id=${sede.id}">Apagar</a></td>
                     </tr>
                 </c:forEach>
             </table>
