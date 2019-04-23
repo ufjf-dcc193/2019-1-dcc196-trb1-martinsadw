@@ -14,6 +14,7 @@
     <body>
         <div>
             <h1>Membros - Sede ${sede.id}</h1>
+            <p><a href="membro-create?sedeid=${sede.id}">Cadastrar membro</a></p>
             <table border=1>
                 <tr>
                     <th>ID</th>

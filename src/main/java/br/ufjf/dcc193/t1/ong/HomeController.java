@@ -31,7 +31,7 @@ public class HomeController {
     }
 
     @RequestMapping("sede-create")
-    public String sedeCreate(Long id) {
+    public String sedeCreate() {
         return "sede-create";
     }
 
@@ -85,7 +85,29 @@ public class HomeController {
 
         return mv;
     }
-    
+
+    @RequestMapping("membro-create")
+    public ModelAndView membroCreate(Long sedeid) {
+        Sede sede = repSede.findById(sedeid).get();
+
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("sede", sede);
+        mv.setViewName("membro-create");
+
+        return mv;
+    }
+
+    @RequestMapping("membro-create-confirm")
+    public String membroCreateConfirm(Long sedeid, Membro membro) {
+        Sede sede = repSede.findById(sedeid).get();
+
+		membro.setSede(sede);
+        sede.getMembros().add(membro);
+        
+        repMembro.save(membro);
+
+        return "redirect:membros?sedeid=" + sedeid;
+    }
 
     @RequestMapping("membro-read")
     public ModelAndView membroRead(Long id) {
