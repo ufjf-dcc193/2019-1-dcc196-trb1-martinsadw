@@ -24,6 +24,7 @@
                     <th>Telefone</th>
                     <th>Site</th>
                     <th>Membros</th>
+                    <th>Ações</th>
                 </tr>
                 <c:forEach items="${sedes}" var="sede">
                     <tr>
@@ -35,7 +36,7 @@
                         <td>${sede.telefone}</td>
                         <td><a href="${sede.site}">${sede.site}</a></td>
                         <td>${sede.membros.toString()}</td>
-                        <!-- <td><a href="delete?id=${sede.id}">X</a></td> -->
+                        <td><a href="read-sede?id=${sede.id}">Ver</a></td>
                     </tr>
                 </c:forEach>
             </table>

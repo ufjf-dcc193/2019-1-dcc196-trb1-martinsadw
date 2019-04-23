@@ -24,7 +24,7 @@ public class HomeController {
     }
     
     @RequestMapping("sedes")
-    public ModelAndView sede() {
+    public ModelAndView sedes() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("sedes");
 
@@ -32,7 +32,15 @@ public class HomeController {
         mv.addObject("sedes", sedes);
         return mv;
     }
-    
+
+    @RequestMapping("read-sede")
+    public ModelAndView readSede(Long id) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("read-sede");
+        mv.addObject("sede", repSede.findById(id).get());
+        return mv;
+    }
+
     @RequestMapping("membros")
     public ModelAndView membros() {
         ModelAndView mv = new ModelAndView();
@@ -40,14 +48,6 @@ public class HomeController {
 
         List<Membro> membros = repMembro.findAll();
         mv.addObject("membros", membros);
-        return mv;
-    }
-    
-    @RequestMapping("sede")
-    public ModelAndView sede(Sede sede) {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("sede");
-        mv.addObject("sede", sede);
         return mv;
     }
     
