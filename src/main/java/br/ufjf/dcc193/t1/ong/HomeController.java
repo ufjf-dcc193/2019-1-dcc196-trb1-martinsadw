@@ -51,6 +51,22 @@ public class HomeController {
         return mv;
     }
 
+    @RequestMapping("sede-update")
+    public ModelAndView sedeUpdate(Long id) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("sede-update");
+        mv.addObject("sede", repSede.findById(id).get());
+
+        return mv;
+    }
+
+    @RequestMapping("sede-update-confirm")
+    public String sedeUpdateConfirm(Sede sede) {
+        repSede.save(sede);
+
+        return "redirect:sedes";
+    }
+
     @RequestMapping("sede-delete")
     public String sedeDelete(Long id) {
 		repSede.deleteById(id);
