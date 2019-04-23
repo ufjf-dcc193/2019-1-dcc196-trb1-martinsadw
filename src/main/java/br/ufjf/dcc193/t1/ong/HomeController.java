@@ -1,5 +1,8 @@
 package br.ufjf.dcc193.t1.ong;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,9 +13,22 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class HomeController {
+	@Autowired
+    SedeRepository repSede;
+    
     @RequestMapping("index")
     public String home() {
         return "index";
+    }
+    
+    @RequestMapping("sedes")
+    public ModelAndView sede() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("sedes");
+
+        List<Sede> sedes = repSede.findAll();
+        mv.addObject("sedes", sedes);
+        return mv;
     }
     
     @RequestMapping("sede")

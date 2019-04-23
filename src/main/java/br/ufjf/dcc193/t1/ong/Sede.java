@@ -5,9 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * Sede
- */
 @Entity
 public class Sede {
     @Id
@@ -19,6 +16,18 @@ public class Sede {
     private String bairro;
     private String telefone;
     private String site;
+
+    public Sede() {
+
+    }
+    public Sede(String nome, String estado, String cidade, String bairro, String telefone, String site) {
+        this.nome = nome;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.telefone = telefone;
+        this.site = site;
+    }
 
     public Long getId() {
         return id;
