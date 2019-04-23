@@ -75,10 +75,13 @@ public class HomeController {
     }
 
     @RequestMapping("membros")
-    public ModelAndView membros() {
+    public ModelAndView membros(Long sedeid) {
+        Sede sede = repSede.findById(sedeid).get();
+
         ModelAndView mv = new ModelAndView();
         mv.setViewName("membros");
-        mv.addObject("membros", repMembro.findAll());
+        mv.addObject("sede", sede);
+        mv.addObject("membros", sede.getMembros());
 
         return mv;
     }

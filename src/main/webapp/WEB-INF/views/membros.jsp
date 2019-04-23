@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Membros - ONG</title>
+        <title>Membros - Sede ${sede.id} - ONG</title>
         <style>
             table {
                 border-spacing: 0;
@@ -13,7 +13,7 @@
     </head>
     <body>
         <div>
-            <h1>Membros</h1>
+            <h1>Membros - Sede ${sede.id}</h1>
             <table border=1>
                 <tr>
                     <th>ID</th>
