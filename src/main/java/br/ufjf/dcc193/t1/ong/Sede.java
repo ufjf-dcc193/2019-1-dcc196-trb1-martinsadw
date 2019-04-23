@@ -1,9 +1,14 @@
 package br.ufjf.dcc193.t1.ong;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Sede {
@@ -17,6 +22,9 @@ public class Sede {
     private String telefone;
     private String site;
 
+    @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
+    private List<Membro> membros;
+
     public Sede() {
 
     }
@@ -27,6 +35,7 @@ public class Sede {
         this.bairro = bairro;
         this.telefone = telefone;
         this.site = site;
+        this.membros = new ArrayList<Membro>();
     }
 
     public Long getId() {
@@ -76,5 +85,9 @@ public class Sede {
     }
     public void setSite(String site) {
         this.site = site;
+    }
+
+    public List<Membro> getMembros() {
+        return membros;
     }
 }

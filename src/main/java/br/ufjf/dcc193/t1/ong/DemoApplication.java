@@ -12,6 +12,21 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
 
+		SedeRepository repSede = ctx.getBean(SedeRepository.class);
+		// MembroRepository repMembro = ctx.getBean(MembroRepository.class);
+
+		Sede sede = new Sede("Sede teste", "MG", "Juiz de Fora", "São Pedro", "999999999", "http://localhost:8080/index");
+
+		Membro membro = new Membro("Membro teste", "Tester", "teste@teste.com", Date.valueOf("2019-04-21"), Date.valueOf("2019-04-22"));
+		membro.setSede(sede);
+		sede.getMembros().add(membro);
+
+		membro = new Membro("Teste membro", "Membro", "membro@membro.com", Date.valueOf("2019-04-22"), Date.valueOf("2019-04-23"));
+		membro.setSede(sede);
+		sede.getMembros().add(membro);
+
+		repSede.save(sede);
+
 		// SedeRepository repSede = ctx.getBean(SedeRepository.class);
 		// repSede.save(new Sede("Sede teste", "MG", "Juiz de Fora", "São Pedro", "999999999", "http://localhost:8080/index"));
 		// repSede.save(new Sede("Outra sede teste", "MG", "Juiz de Fora", "São Pedro", "999999999", "http://localhost:8080/index"));
