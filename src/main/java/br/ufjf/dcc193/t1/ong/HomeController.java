@@ -162,6 +162,29 @@ public class HomeController {
         return mv;
     }
 
+    @RequestMapping("atividade-create")
+    public ModelAndView atividadeCreate(Long sedeid) {
+        Sede sede = repSede.findById(sedeid).get();
+
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("sede", sede);
+        mv.setViewName("atividade-create");
+
+        return mv;
+    }
+
+    @RequestMapping("atividade-create-confirm")
+    public String atividadeCreateConfirm(Long sedeid, Atividade atividade) {
+        Sede sede = repSede.findById(sedeid).get();
+
+		atividade.setSede(sede);
+        sede.getAtividades().add(atividade);
+        
+        repAtividade.save(atividade);
+
+        return "redirect:atividades?sedeid=" + sedeid;
+    }
+
     @RequestMapping("atividade-read")
     public ModelAndView atividadeRead(Long id) {
         ModelAndView mv = new ModelAndView();

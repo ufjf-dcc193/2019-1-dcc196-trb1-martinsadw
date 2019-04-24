@@ -11,6 +11,7 @@
         <p>Título: ${atividade.titulo}</p>
         <p>Descrição: ${atividade.descricao}</p>
         <p>Data de Início: ${atividade.dataInicio}</p>
+        <p>Data de Fim: ${atividade.dataFim}</p>
         <p>Horas Assistenciais: ${atividade.horasAssistencial}</p>
         <p>Horas Jurídicas: ${atividade.horasJuridica}</p>
         <p>Horas Financeiras: ${atividade.horasFinanceira}</p>
