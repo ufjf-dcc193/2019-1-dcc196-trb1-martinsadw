@@ -25,6 +25,7 @@
                     <th>Telefone</th>
                     <th>Site</th>
                     <th>Membros</th>
+                    <th>Atividades</th>
                     <th>Ações</th>
                 </tr>
                 <c:forEach items="${sedes}" var="sede">
@@ -37,6 +38,7 @@
                         <td>${sede.telefone}</td>
                         <td><a href="${sede.site}">${sede.site}</a></td>
                         <td><a href="membros?sedeid=${sede.id}">Ver membros</a></td>
+                        <td><a href="atividades?sedeid=${sede.id}">Ver atividades</a></td>
                         <td><a href="sede-read?id=${sede.id}">Ver</a> <a href="sede-update?id=${sede.id}">Atualizar</a> <a href="sede-delete?id=${sede.id}">Apagar</a></td>
                     </tr>
                 </c:forEach>

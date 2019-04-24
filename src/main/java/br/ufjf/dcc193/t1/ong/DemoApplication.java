@@ -14,6 +14,7 @@ public class DemoApplication {
 
 		SedeRepository repSede = ctx.getBean(SedeRepository.class);
 		// MembroRepository repMembro = ctx.getBean(MembroRepository.class);
+		// AtividadeRepository repAtividade =  ctx.getBean(AtividadeRepository.class);
 
 		Sede sede = new Sede("Sede teste", "MG", "Juiz de Fora", "São Pedro", "999999999", "http://localhost:8080/index");
 
@@ -24,6 +25,14 @@ public class DemoApplication {
 		membro = new Membro("Teste membro", "Membro", "membro@membro.com", Date.valueOf("2019-04-22"), Date.valueOf("2019-04-23"));
 		membro.setSede(sede);
 		sede.getMembros().add(membro);
+
+		Atividade atividade = new Atividade("Atividade", "Uma atividade qualquer", Date.valueOf("2019-04-24"), Date.valueOf("2019-04-25"), 1f, 2f, 3f, 4f);
+		atividade.setSede(sede);
+		sede.getAtividades().add(atividade);
+
+		atividade = new Atividade("Inatividade", "Uma não atividade qualquer", Date.valueOf("2019-04-25"), Date.valueOf("2019-04-24"), 0f, 0f, 0f, 0f);
+		atividade.setSede(sede);
+		sede.getAtividades().add(atividade);
 
 		repSede.save(sede);
 

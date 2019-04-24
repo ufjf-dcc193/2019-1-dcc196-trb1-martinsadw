@@ -25,6 +25,9 @@ public class Sede {
     @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
     private List<Membro> membros;
 
+    @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL)
+    private List<Atividade> atividades;
+
     public Sede() {
 
     }
@@ -36,6 +39,7 @@ public class Sede {
         this.telefone = telefone;
         this.site = site;
         this.membros = new ArrayList<Membro>();
+        this.atividades = new ArrayList<Atividade>();
     }
 
     public Long getId() {
@@ -89,5 +93,9 @@ public class Sede {
 
     public List<Membro> getMembros() {
         return membros;
+    }
+
+    public List<Atividade> getAtividades() {
+        return atividades;
     }
 }

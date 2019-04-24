@@ -15,6 +15,8 @@ public class HomeController {
     SedeRepository repSede;
 	@Autowired
     MembroRepository repMembro;
+	@Autowired
+    AtividadeRepository repAtividade;
     
     @RequestMapping("index")
     public String home() {
@@ -145,5 +147,18 @@ public class HomeController {
         repMembro.delete(membro);
 
         return "redirect:membros?sedeid=" + sedeid;
+    }
+
+    @RequestMapping("atividades")
+    public ModelAndView atividades(Long sedeid) {
+        Sede sede = repSede.findById(sedeid).get();
+
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("atividades");
+        mv.addObject("sede", sede);
+        mv.addObject("atividades", sede.getAtividades());
+        // mv.addObject("atividades", repAtividade.findAll());
+
+        return mv;
     }
 }
