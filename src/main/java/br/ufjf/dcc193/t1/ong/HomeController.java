@@ -162,6 +162,15 @@ public class HomeController {
         return mv;
     }
 
+    @RequestMapping("atividade-read")
+    public ModelAndView atividadeRead(Long id) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("atividade-read");
+        mv.addObject("atividade", repAtividade.findById(id).get());
+
+        return mv;
+    }
+
     @RequestMapping("atividade-delete")
     public String atividadeDelete(Long id) {
         Atividade atividade = repAtividade.findById(id).get();
