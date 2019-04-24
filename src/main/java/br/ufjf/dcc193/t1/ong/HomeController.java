@@ -161,4 +161,13 @@ public class HomeController {
 
         return mv;
     }
+
+    @RequestMapping("atividade-delete")
+    public String atividadeDelete(Long id) {
+        Atividade atividade = repAtividade.findById(id).get();
+        Long sedeid = atividade.getSede().getId();
+        repAtividade.delete(atividade);
+
+        return "redirect:atividades?sedeid=" + sedeid;
+    }
 }
