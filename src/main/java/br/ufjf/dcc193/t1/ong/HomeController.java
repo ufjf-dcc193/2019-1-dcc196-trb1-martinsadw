@@ -157,7 +157,6 @@ public class HomeController {
         mv.setViewName("atividades");
         mv.addObject("sede", sede);
         mv.addObject("atividades", sede.getAtividades());
-        // mv.addObject("atividades", repAtividade.findAll());
 
         return mv;
     }
@@ -221,5 +220,35 @@ public class HomeController {
         repAtividade.delete(atividade);
 
         return "redirect:atividades?sedeid=" + sedeid;
+    }
+
+    @RequestMapping("relatorio")
+    public ModelAndView relatorio(Long sedeid) {
+        Sede sede = repSede.findById(sedeid).get();
+
+        Float totalAssistencial = 0f;
+        Float totalJuridica = 0f;
+        Float totalFinanceira = 0f;
+        Float totalExecutiva = 0f;
+
+        for (Atividade atividade : sede.getAtividades()) {
+            totalAssistencial += atividade.getHorasAssistencial();
+            totalJuridica += atividade.getHorasJuridica();
+            totalFinanceira += atividade.getHorasFinanceira();
+            totalExecutiva += atividade.getHorasExecutiva();
+        }
+
+        Float total = totalAssistencial + totalJuridica + totalFinanceira + totalExecutiva;
+
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("relatorio");
+        mv.addObject("sede", sede);
+        mv.addObject("horasAssistencial", totalAssistencial);
+        mv.addObject("horasJuridica", totalJuridica);
+        mv.addObject("horasFinanceira", totalFinanceira);
+        mv.addObject("horasExecutiva", totalExecutiva);
+        mv.addObject("horasTotal", total);
+
+        return mv;
     }
 }
